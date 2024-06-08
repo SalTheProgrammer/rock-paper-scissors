@@ -17,7 +17,7 @@ function getComputerChoice() {
     } else {
         compChoice = "scissors";
     }
-    console.log(compChoice);
+    console.log("Computer choice: " + compChoice);
     return compChoice;
 }
 
@@ -27,7 +27,7 @@ function getHumanChoice () {
     humanChoice = prompt("Choose rock, paper, or scissors");
     humanChoice = humanChoice.toLowerCase();
 
-    console.log(humanChoice);
+    console.log("Human Choice: " + humanChoice);
     return humanChoice;
 }
 
@@ -70,6 +70,7 @@ function playRound (humanChoice, compChoice) {
 
 function playGame () {
     for (let i = 0; i < 5; i++) {
+        console.log("ROUND " + (i+1));
         const humanSelection = getHumanChoice();
         const computerSelection = getComputerChoice();
         playRound(humanSelection, computerSelection);
