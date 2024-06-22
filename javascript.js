@@ -1,9 +1,16 @@
 // the heart of rock-paper-scissors game
 
-console.log("Let the game begins!")
+//console.log("Let the game begins!")
 
 let humanScore = 0;
 let compScore = 0;
+let humanChoice = "rock"; //default human choice is rock
+let compChoice = "rock"; //default computer choice is rock
+
+const images = Array.from(document.querySelectorAll('.images'));
+var gameScore = document.getElementById('gameScore');
+var announcement = document.getElementById('announcement');
+var compImage = document.getElementById('compImage');
 
 function getComputerChoice() {
     let compChoice = "rock"; //default choice for computer
@@ -12,79 +19,89 @@ function getComputerChoice() {
 
     if (compNumChoice == 0) {
         compChoice = "rock";
+        compImage.src = "./images/rock-sketch.png";
     } else if (compNumChoice == 1) {
         compChoice = "paper";
+        compImage.src = "./images/paper-sketch.png";
     } else {
         compChoice = "scissors";
+        compImage.src = "./images/scissors-sketch.png";
     }
-    console.log("Computer choice: " + compChoice);
+    //console.log("Computer choice: " + compChoice);
+    compImage.width = "100";
+    //compImage.height = "100";
     return compChoice;
 }
 
 function getHumanChoice () {
-    let humanChoice = "rock"; //default choice for human
-
-    humanChoice = prompt("Choose rock, paper, or scissors");
-    humanChoice = humanChoice.toLowerCase();
-
-    console.log("Human Choice: " + humanChoice);
+    //console.log("Human Choice: " + humanChoice);
     return humanChoice;
 }
 
+function setHumanChoice (choice) {
+    humanChoice = choice;
+}
+
 function playRound (humanChoice, compChoice) {
+    let result = "";
+
     if (humanChoice == "rock") {
         if (compChoice == "rock") {
-            console.log("Draw!");
+            //console.log("Draw!");
+            result = "Draw";
         } else if (compChoice == "paper") {
-            console.log("You Win! Paper beats Rock.");
+            //console.log("You Win! Paper beats Rock.");
+            result = "You Win! Paper beats Rock."
             humanScore = humanScore + 1;
         } else if (compChoice == "scissors") {
-            console.log("You Lose ... Rock Beats Scissors")
+            //console.log("You Lose ... Rock Beats Scissors")
+            result = "You Lose ... Rock Beats Scissors";
             compScore = compScore + 1;
         } 
     } else if (humanChoice == "paper") {
         if (compChoice == "rock") {
-            console.log("You Win! Paper beats Rock.");
+            //console.log("You Win! Paper beats Rock.");
+            result = "You Win! Paper beats Rock.";
             humanScore = humanScore + 1;
         } else if (compChoice == "paper") {
-            console.log("Draw!");
+            //console.log("Draw!");
+            result = "Draw";
         } else if (compChoice == "scissors") {
-            console.log("You Lose ... Scissors beat Paper")
+            //console.log("You Lose ... Scissors beat Paper")
+            result = "You Lose ... Scissors beat Paper";
             compScore = compScore + 1;
         }
     } else if (humanChoice == "scissors") {
         if (compChoice == "rock") {
-            console.log("You Lose ... Rock beats Scissors.");
+            //console.log("You Lose ... Rock beats Scissors.");
+            result = "You Lose ... Rock beats Scissors.";
             compScore = compScore + 1;
         } else if (compChoice == "paper") {
-            console.log("You Win! Scissors beat Paper.");
+            //console.log("You Win! Scissors beat Paper.");
+            result = "You Win! Scissors beat Paper.";
             humanScore = humanScore + 1;
         } else if (compChoice == "scissors") {
-            console.log("Draw!")
+            result = "Draw!";
+            //console.log("Draw!")
         }
     } else {
         console.log("You gave non-sensical input, therefore you lose");
         compScore = compScore + 1;
     }
+
+    announcement.innerHTML = result;
+    gameScore.innerHTML = "Human " + humanScore + " - " + compScore + " Computer";
 }   
 
-function playGame () {
-    for (let i = 0; i < 5; i++) {
-        console.log("ROUND " + (i+1));
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection);
-      }
-    console.log("Your Score is " + humanScore);
-    console.log("Computer Score is " + compScore);
 
-    if (humanScore < compScore) {
-        console.log("Sorry.... Computer is Superior");
-    } else if (humanScore > compScore) {
-        console.log ("Congratulations! You are the more superior being.");
-    } else {
-        console.log ("You are as good as the computer");
-    }
-}
-
-playGame();
+images.forEach((image) => {
+    // and for each one we add a 'click' listener
+    image.addEventListener("click", () => {
+        //alert(image.getAttribute("data-image"));
+        if (humanScore >= 5 || compScore >= 5) {
+            return;
+        }
+        setHumanChoice(image.getAttribute("data-image"));
+        playRound(getHumanChoice(), getComputerChoice());
+    });
+});

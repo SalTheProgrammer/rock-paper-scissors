@@ -3,15 +3,45 @@
     <head>
         <meta charset="UTF-8">
         <title>Rock-Paper-Scissors</title>
+        <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
-        <h1>Let The Rock-Paper-Scissors Game Begin</h1>
-        <h2>Who is More Superior Human or Computer?</h2>
+        <div class="header">
+            <h2>Let The Rock-Paper-Scissors Game Begins!</h2>
+            <h2>Who is More Superior: Human or Computer?</h2>
+        </div>
 
-        <!-- javascript stuff -->
+        <div class="score">
+            <h2 id = "gameScore">Human 0  -  0 Computer</h2>
+        </div>
+        <div class="selections">
+            <div class="human-selections">
+                <div class="cards">
+                    <img data-image="rock" src="./images/rock-sketch.png" alt="rock" class="images">
+                    <!--<div class="text">Rock</div>-->
+                </div>
+                
+                <div class="cards">
+                    <img data-image="scissors" src="./images/scissors-sketch.png" alt="scissors" class="images">
+                    <!--<div class="text">Scissors</div>-->
+                </div>
+                
+                <div class="cards">
+                    <img data-image="paper" src="./images/paper-sketch.png" alt="paper" class="images">
+                    <!--<div class="text">Paper</div>-->
+                </div>
+            </div>
+
+            <!--<div class="comp-selections">-->
+            <img class="comp-selections" id = "compImage" src="./images/robot-sketch.png" alt="robot" class="images">
+            <!--</div>-->
+        </div>
+
+        <div class="footer">
+            <h2 id = "announcement">Are you Ready?</h2>
+        </div>
+    </body>
 
     <script src="javascript.js"></script>
-          
-    </body>
 </html>

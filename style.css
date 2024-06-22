@@ -1,0 +1,59 @@
+
+
+body {
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-size: 22px;
+    /*background-color: aqua;*/
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 24px;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+.selections {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.human-selections{
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  padding-top: 48px;
+}
+
+.comp-selections {
+  image-rendering: pixelated;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: 0.5s ease;
+}
+
+.cards:hover {
+  -webkit-transform: scale(1.4);
+  -ms-transform: scale(1.4);
+  transform: scale(1.4);
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+
+.footer{
+  margin-top: 48px;
+}
+
+img {
+  width: 100px;
+  /*border-radius: 50%;*/
+}
+
