@@ -1,7 +1,5 @@
 // the heart of rock-paper-scissors game
 
-//console.log("Let the game begins!")
-
 let humanScore = 0;
 let compScore = 0;
 let humanChoice = "rock"; //default human choice is rock
@@ -91,9 +89,15 @@ function playRound (humanChoice, compChoice) {
 
     announcement.innerHTML = result;
     gameScore.innerHTML = "Human " + humanScore + " - " + compScore + " Computer";
+
+    if (humanScore >= 5) {
+        announcement.innerHTML = "CONGRATULATIONS, HUMANS REIGN SUPREME!";
+    } else if (compScore >= 5) {
+        announcement.innerHTML = "SORRY, COMPUTER IS SUPERIOR"
+    }
 }   
 
-
+//Game Logic
 images.forEach((image) => {
     // and for each one we add a 'click' listener
     image.addEventListener("click", () => {
